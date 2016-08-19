@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+
+	<title>QA Bot</title>
+	<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="static/js/jquery-tweetscroll.js"></script>
+    <script src="static/js/caroufredsel-carousel.js"></script>
+	<script type="text/javascript">
+		var x=window.screen.availHeight;
+		var y=window.screen.availWidth;
+
+		$(function() {
+      $('input#submit').bind('click', function() {
+        $.getJSON('/GetAnswer', {
+          question: $('input[name="question"]').val()
+        }, function(data) {
+        	//$("#foo3").append("<li>"+data.result[i]+"</li>")
+         //$("#foo3").text(data.result);
+         for(var i=0; i<data.result.length;i++){
+         	$("#foo3").append("<div><li>"+data.result[i].answer+"</li>"+"<ul><li>"+data.result[i].next_answer[0]+"</li><li>"+data.result[i].next_answer[1]+"</li><li>"+data.result[i].next_answer[2]+"</li></ul></div>")
+         	if(i==0){
+         		$("foo3_pag").append('<a class="selected" href="#"><span>'+(i+1)+'</span></a>')
+         	}
+         	else
+         		$("foo3_pag").append('<a class="" href="#"><span>'+(i+1)+'</span></a>')
+         }
+          console.log(data.result.length)
+        });
+        return false;
+      });
+    });
+</script>
+
+	<style type="text/css">
+	#centered_div {position: absolute; top: 25	%; left: 30%; }
+	body {
+	align-self: center;
+    background-image: url("illusionball.jpg");
+    background-color: #cccccc;
+}
+
+ol, ul {list-style: none;}
+li {display: list-item;}
+
+.grid_3.carousel-article .caroufredsel_wrapper{
+    width: 100% !important;
+}
+
+.carousel-article{
+    width: 100%;
+}
+
+.grid_3.carousel-article .carousel-li &gt; li{
+    width: 220px;
+    margin-right: 0;
+}
+
+.carousel-pagination {
+    text-align: center;
+    float: left;
+    margin-top: 10px;
+}
+
+.carousel-pagination a {
+    background: url('/static/images/btn.png') no-repeat;
+    width: 19px;
+    height: 5px;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}
+
+.carousel-pagination a.selected {
+    background: url('/static/images/btn-active.png') no-repeat;
+    cursor: default;
+}
+
+.carousel-pagination a span {
+    display: none;
+} 
+	</style>
+</head>
+<body bgcolor>
+	<div id="centered_div">
+ 
+  	
+<form action="/GetAnswer" method="post" role="form">
+
+<table cellSpacing=0 cellPadding=0>
+<tbody>
+<tr>
+<td width=75>&nbsp;</td>
+<td align=middle>
+<h1>Watson Jr.</h1>
+
+<input style="height:30px" id="question" type="question" name="question" maxLength=256 size=55><br>
+	<input style="margin-top: 10px" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="submit" type="submit" value="submit">
+	<a href="/Refresh" style="margin-top: 10px;margin-left: 10px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="refresh" type="refresh" value="refresh">Refresh</a><br></td></tr>
+</tbody>
+</table>
+	<article class="grid_3  carousel-article">
+                   <h4><b>Answers:</b></h4>
+                   <div style="display: block; text-align: start; position: relative; top: auto; right: auto; bottom: auto; left: auto; width: 220px; height: 90px; margin: 0px; overflow: hidden;" class="caroufredsel_wrapper">
+                   <ul style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1540px; height: 90px;" id="foo3" class="carousel-li">
+                   
+                       </ul>
+                       </div>
+                   <div class="clearfix"></div>
+                   <div style="display: block;" class="carousel-pagination" id="foo3_pag"><!--<a class="selected" href="#"><span>1</span></a><a class="" href="#"><span>2</span></a><a class="" href="#"><span>3</span></a>--></div>
+               </article><!-- slider text article end -->
+
+	<span id="result"><b></b></span>
+</form>
+
+</div>
+<script type="text/javascript">
+	//Code for the slider
+	$("#foo3").carouFredSel({
+                items: 1,
+                auto: true,
+                scroll: 0,
+                pagination  : "#foo3_pag"
+            });
+	</script>
+
+</body>
+</html>
