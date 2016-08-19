@@ -30,12 +30,15 @@
 * Change directory to 
 
 >	"/Code/Application"
+
 * Run the app.py file using the command 
 
 >	python app.py
+
 * On your browser, go to 
 
 >	http://localhost:5001/index
+
 * The application frontend is displayed with a textbox to enter the question and a submit button to get the answer
 
 
