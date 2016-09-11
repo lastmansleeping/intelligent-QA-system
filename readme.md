@@ -1,10 +1,11 @@
 #Intelligent Question Answering Engine
 * Trained a logistic regression classifier, which functioned as an answer sentence retrieval system, over the WikiQA dataset containing around 30,000 sentences.
-* Advanced linguistic features were explored using topic models to arrive at a better system with MAP and MRR scores of 0.68 and 0.69 respectively.
-* Additionaly, the system was also equiped with a question prediction module by using a graph based user pattern analysis scheme.  
-* A multi-class question type classifier was built to allow the model to further extract question type specific features.
-* A classic IR method involving tf-idf weight vectors was used for retrieving relevant documents for each question asked.
-* K-Means and hierarchical clustering algorithms were used to group common documents and thereby aid in reducing the search space.
+* Maximized the performance of the model to obtain MAP and MRR scores of 0.68 and 0.69 respectively by employing advanced linguistic features using LDA topic modeling.
+* Built a user based question prediction model which used a graph based user pattern analysis scheme.
+* Extracted question type related features using a multi-class classifier to train the model.
+* Implemented a classic IR method involving tf-idf weight vectors for retrieving relevant documents for each user question.
+* Performed search space reduction by exploiting K-Means and hierarchical clustering algorithms to group similar documents.
+* Tech Stack - Python, NLP, Machine Learning, AI
 
 
 ###Folders
